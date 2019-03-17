@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import '../styles.dart';
+import 'landin_screen.dart';
 
 class Home extends StatelessWidget {
   Widget build(BuildContext coontext) {
     return Scaffold(
+      backgroundColor: TurfColors.bgColor,
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         currentIndex: 0,
@@ -21,22 +24,22 @@ class Home extends StatelessWidget {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.crop_free,
+              Icons.notifications,
             ),
-            title: Text('Scan'),
+            title: Text('Alerts'),
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.remove_red_eye,
+              Icons.account_circle,
             ),
             title: Text(
-              'Prediction',
+              'Profile',
             ),
           ),
         ],
       ),
       body: Center(
-        child: Text("Hello Turf"),
+        child: LandingPage(),
       ),
     );
   }

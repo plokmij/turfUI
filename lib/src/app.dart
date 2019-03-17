@@ -7,7 +7,8 @@ class App extends StatelessWidget {
     return MaterialApp(
       home: Home(),
       theme: ThemeData(
-        primaryColor: TurfColors.red, 
+        primaryColor: TurfColors.red,
+        backgroundColor: TurfColors.bgColor,
       ),
     );
   }
