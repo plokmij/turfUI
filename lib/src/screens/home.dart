@@ -1,46 +1,85 @@
 import 'package:flutter/material.dart';
 import '../styles.dart';
 import 'landin_screen.dart';
+import '../blocs/navigation_provider.dart';
 
 class Home extends StatelessWidget {
-  Widget build(BuildContext coontext) {
-    return Scaffold(
-      backgroundColor: TurfColors.bgColor,
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        currentIndex: 0,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-            ),
-            title: Text("Home"),
+  Widget build(BuildContext context) {
+    final navBloc = NavigationProvider.of(context);
+    List<Widget> widgets = [
+      LandingPage(),
+      Text("Under Development"),
+      Text("Under Development"),
+      Text("Under Development"),
+    ];
+
+    List<Text> titles = [
+      Text("Search"),
+      Text("Alerts"),
+      Text("Profile"),
+    ];
+    return StreamBuilder(
+      stream: navBloc.currentIndex,
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        return Scaffold(
+          appBar: snapshot.hasData
+              ? snapshot.data > 0
+                  ? AppBar(
+                      title: titles[snapshot.data-1],
+                    )
+                  : EmptyAppBar()
+              : EmptyAppBar(),
+          backgroundColor: TurfColors.bgColor,
+          bottomNavigationBar: BottomNavigationBar(
+            onTap: (integer) {
+              navBloc.changeIndex(integer);
+            },
+            type: BottomNavigationBarType.fixed,
+            currentIndex: snapshot.hasData ? snapshot.data : 0,
+            items: [
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.home,
+                ),
+                title: Text("Home"),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.search,
+                ),
+                title: Text("Search"),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.notifications,
+                ),
+                title: Text('Alerts'),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.account_circle,
+                ),
+                title: Text(
+                  'Profile',
+                ),
+              ),
+            ],
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.search,
-            ),
-            title: Text("Search"),
+          body: Center(
+            child: widgets[snapshot.hasData ? snapshot.data : 0],
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.notifications,
-            ),
-            title: Text('Alerts'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.account_circle,
-            ),
-            title: Text(
-              'Profile',
-            ),
-          ),
-        ],
-      ),
-      body: Center(
-        child: LandingPage(),
-      ),
+        );
+      },
     );
   }
+}
+
+class EmptyAppBar extends StatelessWidget implements PreferredSizeWidget {
+  Widget build(BuildContext context) {
+    return Container();
+  }
+
+  @override
+  // TODO: implement preferredSize
+  Size get preferredSize => Size(0.0, 0.0);
 }
