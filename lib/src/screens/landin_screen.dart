@@ -70,7 +70,7 @@ class LandingPage extends StatelessWidget {
             width: 180.0,
             height: 30.0,
             decoration: BoxDecoration(
-              color: TurfColors.red,
+              color: TurfColors.blue,
               shape: BoxShape.rectangle,
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(12.0),
@@ -95,7 +95,7 @@ class LandingPage extends StatelessWidget {
   Widget buildOfferCard(double width, Color color) {
     return Container(
       width: width,
-      height: width * 0.67,
+      height: width * 0.57,
       margin: EdgeInsets.only(right: 10),
       decoration: BoxDecoration(
           shape: BoxShape.rectangle,
@@ -107,7 +107,7 @@ class LandingPage extends StatelessWidget {
         child: Text(
           "Offer Detail",
           style: TextStyle(
-              fontWeight: FontWeight.w700, color: Colors.white, fontSize: 30.0),
+              fontWeight: FontWeight.w700, color: Colors.white, fontSize: 25.0),
         ),
       ),
     );
@@ -191,11 +191,11 @@ class LandingPage extends StatelessWidget {
             SliverAppBar(
               //backgroundColor: Color(0xff214489),
               title: Text(
-                "TITLE",
+                "goTurf",
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.w900,
-                  fontSize: 20,
+                  fontSize: 22,
                 ),
               ),
               expandedHeight:
@@ -255,7 +255,7 @@ class LandingPage extends StatelessWidget {
               ),
               Container(
 //                  width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.width * 0.57,
+                height: MediaQuery.of(context).size.width * 0.50,
                 color: Colors.white,
                 child: ListView.builder(
                   padding: EdgeInsets.only(
@@ -271,7 +271,10 @@ class LandingPage extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(top: 5.0),
+                margin: EdgeInsets.only(
+                  top: 5.0,
+                  bottom: 5.0,
+                ),
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.width * 0.57,
                 color: Colors.white,
