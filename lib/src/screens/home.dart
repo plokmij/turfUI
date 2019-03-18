@@ -3,6 +3,7 @@ import '../blocs/navigation_provider.dart';
 import '../styles.dart';
 import 'landin_screen.dart';
 import 'search.dart';
+import 'profile.dart';
 
 class Home extends StatelessWidget {
   Widget build(BuildContext context) {
@@ -11,7 +12,7 @@ class Home extends StatelessWidget {
       LandingPage(),
       SearchScreen(),
       Text("Under Development"),
-      Text("Under Development"),
+      ProfileScreen(),
     ];
 
     List<Text> titles = [
@@ -25,9 +26,10 @@ class Home extends StatelessWidget {
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         return Scaffold(
           appBar: snapshot.hasData
-              ? snapshot.data > 1
+              ? snapshot.data == 2
                   ? AppBar(
-                      title: titles[snapshot.data-1],
+                      title: Text("Alerts"),
+                      centerTitle: true,
                     )
                   : EmptyAppBar()
               : EmptyAppBar(),

@@ -101,28 +101,34 @@ class SearchScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     //print(MediaQuery.of(context).size);
     List<Widget> items = [
-          CupertinoNavigationBar(
-            leading: Icon(
-              Icons.arrow_back,
-              color: Colors.black,
-            ),
-            middle: CupertinoTextField(
-              placeholder: 'Search',
-              decoration: BoxDecoration(
-                  color: Colors.white10,
-                  border: Border.all(
-                    width: 1.0,
-                    color: Colors.grey,
-                  )),
-            ),
-            trailing: Icon(
-              Icons.remove_red_eye,
-              color: Colors.black,
-            ),
-          ),
-          buildList(),
-          buildBody(context),
-        ];
+      CupertinoNavigationBar(
+        leading: Icon(
+          Icons.arrow_back,
+          color: Colors.black,
+        ),
+        middle: CupertinoTextField(
+          placeholder: 'Search',
+          decoration: BoxDecoration(
+              color: Colors.white10,
+              border: Border.all(
+                width: 1.0,
+                color: Colors.grey,
+              )),
+        ),
+        trailing: Icon(
+          Icons.remove_red_eye,
+          color: Colors.black,
+        ),
+      ),
+      buildList(),
+      SizedBox(
+        height: 20,
+      ),
+      buildSearchTile(),
+      buildSearchTile(),
+      buildSearchTile(),
+      buildSearchTile(),
+    ];
     return CupertinoPageScaffold(
       resizeToAvoidBottomInset: false,
       /*navigationBar: CupertinoNavigationBar(
@@ -148,7 +154,7 @@ class SearchScreen extends StatelessWidget {
         child: ListView.builder(
           itemCount: items.length,
           padding: EdgeInsets.all(0),
-          itemBuilder: (BuildContext context, int index){
+          itemBuilder: (BuildContext context, int index) {
             return items[index];
           },
         ),
@@ -171,7 +177,7 @@ class SearchScreen extends StatelessWidget {
         border: Border(top: BorderSide(color: Colors.red, width: 10.0)),
       ),*/
         //alignment: Alignment.topCenter,
-        //height: 460.0,
+        height: 140.0 * items.length,
         child: ListView.builder(
           padding: EdgeInsets.all(0),
           itemCount: items.length,
