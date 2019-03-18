@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import '../blocs/navigation_provider.dart';
 import '../styles.dart';
 import 'landin_screen.dart';
-import '../blocs/navigation_provider.dart';
+import 'search.dart';
 
 class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     final navBloc = NavigationProvider.of(context);
     List<Widget> widgets = [
       LandingPage(),
-      Text("Under Development"),
+      SearchScreen(),
       Text("Under Development"),
       Text("Under Development"),
     ];
@@ -18,12 +19,13 @@ class Home extends StatelessWidget {
       Text("Alerts"),
       Text("Profile"),
     ];
+
     return StreamBuilder(
       stream: navBloc.currentIndex,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         return Scaffold(
           appBar: snapshot.hasData
-              ? snapshot.data > 0
+              ? snapshot.data > 1
                   ? AppBar(
                       title: titles[snapshot.data-1],
                     )
