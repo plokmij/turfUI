@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import '../styles.dart';
 
 class LocationCard extends StatelessWidget {
   final String location;
@@ -101,26 +102,6 @@ class SearchScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     //print(MediaQuery.of(context).size);
     List<Widget> items = [
-      CupertinoNavigationBar(
-        leading: Icon(
-          Icons.arrow_back,
-          color: Colors.black,
-        ),
-        middle: CupertinoTextField(
-          placeholder: 'Search',
-          decoration: BoxDecoration(
-              color: Colors.white10,
-              border: Border.all(
-                width: 1.0,
-                color: Colors.grey,
-              )),
-        ),
-        trailing: Icon(
-          Icons.remove_red_eye,
-          color: Colors.black,
-        ),
-      ),
-      buildList(),
       SizedBox(
         height: 20,
       ),
@@ -129,8 +110,38 @@ class SearchScreen extends StatelessWidget {
       buildSearchTile(),
       buildSearchTile(),
     ];
-    return CupertinoPageScaffold(
+    return Scaffold(
       resizeToAvoidBottomInset: false,
+      appBar: PreferredSize(
+        preferredSize: Size(MediaQuery.of(context).size.width, 144),
+        child: Column(
+          children: <Widget>[
+            CupertinoNavigationBar(
+              padding: EdgeInsetsDirectional.fromSTEB(3, 0, 3, 0),
+              backgroundColor: TurfColors.red,
+              leading: Icon(
+                Icons.arrow_back,
+                color: Colors.white,
+              ),
+              middle: CupertinoTextField(
+                placeholder: 'Search',
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  /*border: Border.all(
+                      width: 1.0,
+                      color: Colors.grey,
+                )*/
+                ),
+              ),
+              trailing: Icon(
+                Icons.remove_red_eye,
+                color: Colors.white,
+              ),
+            ),
+            buildList(),
+          ],
+        ),
+      ),
       /*navigationBar: CupertinoNavigationBar(
           leading: Icon(
             Icons.arrow_back,
@@ -150,14 +161,13 @@ class SearchScreen extends StatelessWidget {
             color: Colors.black,
           ),
         ),*/
-      child: Container(
-        child: ListView.builder(
-          itemCount: items.length,
-          padding: EdgeInsets.all(0),
-          itemBuilder: (BuildContext context, int index) {
-            return items[index];
-          },
-        ),
+
+      body: ListView.builder(
+        itemCount: items.length,
+        padding: EdgeInsets.all(0),
+        itemBuilder: (BuildContext context, int index) {
+          return items[index];
+        },
       ),
     );
   }
@@ -252,13 +262,13 @@ class SearchScreen extends StatelessWidget {
         Container(
           padding: EdgeInsets.only(left: 10.0),
           child: Text(
-            'Centres in Location 1',
+            'Turfs in Place 1',
             style: TextStyle(
               fontSize: 15.0,
               fontWeight: FontWeight.w700,
             ),
           ),
-          alignment: Alignment.topLeft,
+          alignment: Alignment.center,
         ),
         Container(
           alignment: Alignment.topCenter,

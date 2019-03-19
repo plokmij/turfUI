@@ -691,7 +691,7 @@ class SizeSelector extends StatelessWidget {
   }
 
   Widget buildRow(DateTimeBloc dateTimeBloc) {
-    dateTimeBloc.changSize("30");
+    dateTimeBloc.changSize("5x5");
     return Column(
       children: <Widget>[
         Container(

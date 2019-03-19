@@ -96,7 +96,7 @@ class LandingPage extends StatelessWidget {
     return Container(
       width: width,
       height: width * 0.57,
-      margin: EdgeInsets.only(right: 10),
+      margin: EdgeInsets.only(right: 5),
       decoration: BoxDecoration(
           shape: BoxShape.rectangle,
           borderRadius: BorderRadius.all(
