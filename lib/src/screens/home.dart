@@ -4,6 +4,7 @@ import '../styles.dart';
 import 'landin_screen.dart';
 import 'search.dart';
 import 'profile.dart';
+import 'turf_detail.dart';
 
 class Home extends StatelessWidget {
   Widget build(BuildContext context) {
@@ -11,7 +12,7 @@ class Home extends StatelessWidget {
     List<Widget> widgets = [
       LandingPage(),
       SearchScreen(),
-      Text("Under Development"),
+      TurfDetail(),
       ProfileScreen(),
     ];
 
@@ -25,14 +26,7 @@ class Home extends StatelessWidget {
       stream: navBloc.currentIndex,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         return Scaffold(
-          appBar: snapshot.hasData
-              ? snapshot.data == 2
-                  ? AppBar(
-                      title: Text("Alerts"),
-                      centerTitle: true,
-                    )
-                  : EmptyAppBar()
-              : EmptyAppBar(),
+          appBar: EmptyAppBar(),
           backgroundColor: TurfColors.bgColor,
           bottomNavigationBar: BottomNavigationBar(
             onTap: (integer) {

@@ -7,3 +7,17 @@ class TurfColors {
   static Color black =  Color(0xff0a1525);
   static Color white = Colors.white;
 }
+
+class HeaderStyles{
+  static TextStyle dateTimePicker = TextStyle(
+    color: TurfColors.black,
+    fontWeight: FontWeight.w500,
+    fontSize: 16.0
+  );
+
+  static TextStyle buttonText =TextStyle(
+    color: TurfColors.white,
+    fontWeight: FontWeight.w500,
+    fontSize: 17.0
+  );
+}
